@@ -14,7 +14,7 @@ With nix shell
 
 ```bash
 nix shell github:a2not/nvim#neovim
-neovim
+nvim
 ```
 
 ### Import to flake
