@@ -46,10 +46,49 @@ programs.neovim = inputs.nvim.lib.mkHomeManager {
 };
 ```
 
-## reference
+## Reference
 
 Wanted to config neovim in lua, and stumbled upon ALT-F4-LLC's flake.
 
 Nix flake code is mostly the same, shout-out for his great work.
 
 - https://github.com/ALT-F4-LLC/thealtf4stream.nvim/
+
+### Memo
+
+Maybe use `nixpkgs.vimUtils.buildVimPlugin` is just enough.
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  };
+
+  outputs = inputs @ {
+    flake-parts,
+    self,
+    ...
+  }:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      system = [
+        "aarch64-linux"
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+
+      perSystem = {pkgs, ...}: {
+        packages = {
+          nvim = pkgs.vimUtils.buildVimPlugin {
+            name = "nvim";
+            src = "./";
+          };
+        };
+      };
+
+      # ...
+    };
+}
+```
+
+- reference: https://www.youtube.com/watch?v=i68c6vZkSXc
