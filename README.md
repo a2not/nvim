@@ -6,6 +6,8 @@ Can be used with nix or imported to other flakes.
 
 ## With Nix
 
+Make sure `git` installed.
+
 ### Run in shell
 
 With nix shell
