@@ -1,15 +1,45 @@
 {
-  description = "A very basic flake";
+  description = "neovim with a2not's config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = {
+    self,
+    nixpkgs,
+    flake-parts,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      flake = {
+        lib = import ./lib {inherit inputs;};
+      };
 
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
+      systems = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
 
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
+      perSystem = {
+        config,
+        self',
+        inputs',
+        pkgs,
+        system,
+        ...
+      }: let
+        inherit (pkgs) just mkShell;
+      in {
+        devShells = {
+          default = mkShell {
+            buildInputs = [just];
+          };
+        };
 
-  };
+        formatter = pkgs.alejandra;
+
+        packages = {
+          default = self.lib.mkVimPlugin {inherit system;};
+          neovim = self.lib.mkNeovim {inherit system;};
+        };
+      };
+    };
 }
