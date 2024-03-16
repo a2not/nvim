@@ -26,11 +26,11 @@
         system,
         ...
       }: let
-        inherit (pkgs) just mkShell;
+        inherit (pkgs) git mkShell;
       in {
         devShells = {
           default = mkShell {
-            buildInputs = [just];
+            buildInputs = [git];
           };
         };
 

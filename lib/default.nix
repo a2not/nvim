@@ -14,7 +14,6 @@ in rec {
         rm -rf $out/README.md
         rm -rf $out/flake.lock
         rm -rf $out/flake.nix
-        rm -rf $out/justfile
         rm -rf $out/lib
       '';
       src = ../.;
