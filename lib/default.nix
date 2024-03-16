@@ -41,6 +41,9 @@ in rec {
       configure = {
         customRC = initLua;
         packages.main = {inherit start;};
+        withNodeJs = true;
+        withPython3 = true;
+        withRuby = true;
       };
     };
 
@@ -50,5 +53,8 @@ in rec {
   in {
     inherit extraConfig plugins;
     enable = true;
+    withNodeJs = true;
+    withPython3 = true;
+    withRuby = true;
   };
 }
