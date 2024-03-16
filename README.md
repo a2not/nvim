@@ -1,0 +1,55 @@
+# nvim conf
+
+Just cloning this under `$XDG_CONFIG_HOME` works fine.
+
+Can be used with nix or imported to other flakes.
+
+## With Nix
+
+### Run in shell
+
+Run once
+
+```bash
+nix run github:a2not/nvim#neovim
+```
+
+Or with nix shell
+
+```bash
+nix shell github:a2not/nvim#neovim
+neovim
+```
+
+### Import to flake
+
+Add to `flake.nix` as an input
+
+```nix
+inputs = {
+  nvim.url = "github:a2not/nvim";
+};
+```
+
+- With system config: Add to environment.systemPackages configuration
+
+```nix
+environment.systemPackages = [
+  inputs.nvim.packages.${pkgs.system}.neovim
+];
+```
+
+- And/Or with home-manager:
+```nix
+programs.neovim = inputs.nvim.lib.mkHomeManager {
+  system = pkgs.system;
+};
+```
+
+## reference
+
+Wanted to config neovim in lua, and stumbled upon ALT-F4-LLC's flake.
+
+Nix flake code is mostly the same, shout-out for his great work.
+
+- https://github.com/ALT-F4-LLC/thealtf4stream.nvim/
