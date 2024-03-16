@@ -8,13 +8,7 @@ Can be used with nix or imported to other flakes.
 
 ### Run in shell
 
-Run once
-
-```bash
-nix run github:a2not/nvim#neovim
-```
-
-Or with nix shell
+With nix shell
 
 ```bash
 nix shell github:a2not/nvim#neovim
