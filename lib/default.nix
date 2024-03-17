@@ -20,56 +20,26 @@ in rec {
     };
 
   mkNeovimPlugins = {system}: let
-    inherit (pkgs) vimPlugins;
-    pkgs = legacyPackages.${system};
     a2not-nvim = mkVimPlugin {inherit system;};
   in [
-    vimPlugins.nvim-lspconfig
-    vimPlugins.nvim-treesitter.withAllGrammars
-
     a2not-nvim
   ];
 
-  mkExtraPackages = {system}: let
-    inherit (pkgs) nodePackages;
-
-    pkgs = import inputs.nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-  in [
-    nodePackages."eslint"
-    nodePackages."typescript"
-    nodePackages."typescript-language-server"
-    nodePackages."yaml-language-server"
-    pkgs.gopls
-    pkgs.lua-language-server
-    pkgs.nil
-    pkgs.rust-analyzer
-
-    # formatters
-    pkgs.alejandra
-    pkgs.gofmt
-    pkgs.rustfmt
-  ];
-
-  initLua = ''
-    lua << EOF
-    ${builtins.readFile ../init.lua}
-    EOF
-  '';
-
+  # initLua = ''
+  #   lua << EOF
+  #   ${builtins.readFile ../init.lua}
+  #   EOF
+  # '';
+  #
   mkNeovim = {system}: let
-    inherit (pkgs) lib neovim;
-    extraPackages = mkExtraPackages {inherit system;};
+    inherit (pkgs) neovim;
     pkgs = legacyPackages.${system};
     start = mkNeovimPlugins {inherit system;};
   in
     neovim.override {
       configure = {
-        customRC = initLua;
+        # customRC = initLua;
         packages.main = {inherit start;};
-        extraMakeWrapperArgs = ''--suffix PATH : "${lib.makeBinPath extraPackages}"'';
         withNodeJs = true;
         withPython3 = true;
         withRuby = true;
@@ -77,11 +47,11 @@ in rec {
     };
 
   mkHomeManager = {system}: let
-    extraConfig = initLua;
-    extraPackages = mkExtraPackages {inherit system;};
+    # extraConfig = initLua;
     plugins = mkNeovimPlugins {inherit system;};
   in {
-    inherit extraConfig extraPackages plugins;
+    # inherit extraConfig plugins;
+    inherit plugins;
     enable = true;
     withNodeJs = true;
     withPython3 = true;
