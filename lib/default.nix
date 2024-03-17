@@ -25,6 +25,21 @@ in rec {
     a2not-nvim
   ];
 
+  mkExtraPackages = {system}: let
+    inherit (pkgs) nodePackages;
+
+    pkgs = import inputs.nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  in [
+    pkgs.unzip
+    pkgs.go
+    pkgs.cargo
+    pkgs.alejandra
+    nodePackages."npm"
+  ];
+
   initLua = ''
     lua << EOF
     ${builtins.readFile ../init.lua}
@@ -32,7 +47,8 @@ in rec {
   '';
 
   mkNeovim = {system}: let
-    inherit (pkgs) neovim;
+    inherit (pkgs) lib neovim;
+    extraPackages = mkExtraPackages {inherit system;};
     pkgs = legacyPackages.${system};
     start = mkNeovimPlugins {inherit system;};
   in
@@ -40,17 +56,19 @@ in rec {
       configure = {
         customRC = initLua;
         packages.main = {inherit start;};
-        withNodeJs = true;
-        withPython3 = true;
-        withRuby = true;
       };
+      extraMakeWrapperArgs = ''--suffix PATH : "${lib.makeBinPath extraPackages}"'';
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
     };
 
   mkHomeManager = {system}: let
     extraConfig = initLua;
+    extraPackages = mkExtraPackages {inherit system;};
     plugins = mkNeovimPlugins {inherit system;};
   in {
-    inherit extraConfig plugins;
+    inherit extraConfig extraPackages plugins;
     enable = true;
     withNodeJs = true;
     withPython3 = true;
