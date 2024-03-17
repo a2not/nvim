@@ -25,12 +25,12 @@ in rec {
     a2not-nvim
   ];
 
-  # initLua = ''
-  #   lua << EOF
-  #   ${builtins.readFile ../init.lua}
-  #   EOF
-  # '';
-  #
+  initLua = ''
+    lua << EOF
+    ${builtins.readFile ../init.lua}
+    EOF
+  '';
+
   mkNeovim = {system}: let
     inherit (pkgs) neovim;
     pkgs = legacyPackages.${system};
@@ -38,7 +38,7 @@ in rec {
   in
     neovim.override {
       configure = {
-        # customRC = initLua;
+        customRC = initLua;
         packages.main = {inherit start;};
         withNodeJs = true;
         withPython3 = true;
@@ -47,11 +47,10 @@ in rec {
     };
 
   mkHomeManager = {system}: let
-    # extraConfig = initLua;
+    extraConfig = initLua;
     plugins = mkNeovimPlugins {inherit system;};
   in {
-    # inherit extraConfig plugins;
-    inherit plugins;
+    inherit extraConfig plugins;
     enable = true;
     withNodeJs = true;
     withPython3 = true;
