@@ -20,8 +20,12 @@ in rec {
     };
 
   mkNeovimPlugins = {system}: let
+    pkgs = legacyPackages.${system};
+    inherit (pkgs) vimPlugins;
     a2not-nvim = mkVimPlugin {inherit system;};
   in [
+    vimPlugins.nvim-treesitter.withAllGrammars
+
     a2not-nvim
   ];
 
@@ -34,10 +38,15 @@ in rec {
     };
   in [
     pkgs.unzip
+    pkgs.wget
+
     pkgs.go
     pkgs.cargo
     pkgs.alejandra
     nodePackages."npm"
+    pkgs.gcc
+    pkgs.zig
+    pkgs.python3
   ];
 
   initLua = ''
