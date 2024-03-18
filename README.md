@@ -50,6 +50,8 @@ Nix flake code is mostly the same, shout-out for his great work.
 
 - https://github.com/ALT-F4-LLC/thealtf4stream.nvim/
 
+<!---
+
 ### Memo
 
 Maybe use `nixpkgs.vimUtils.buildVimPlugin` is just enough.
@@ -88,3 +90,5 @@ Maybe use `nixpkgs.vimUtils.buildVimPlugin` is just enough.
 ```
 
 - reference: https://www.youtube.com/watch?v=i68c6vZkSXc
+
+-->
