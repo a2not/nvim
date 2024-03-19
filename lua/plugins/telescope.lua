@@ -127,17 +127,19 @@ return {
         --   truncate = 4,
         --   shorten = 4,
         -- },
-      },
-      pickers = {
-        live_grep = {
-          additional_args = function(opts)
-            return {
-              '--hidden',
-              '--glob',
-              '!{**/.git/*,**/node_modules/*}',
-              -- '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock}',
-            }
-          end,
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          -- NOTE: default above, see :h telescope.defaults.vimgrep_arguments
+          -- below is the additional, in order to apply live_grep and grep_string at the same time.
+          '--hidden',
+          '--glob',
+          '!{**/.git/*,**/node_modules/*}',
         },
       },
     }
