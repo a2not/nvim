@@ -131,7 +131,12 @@ return {
       pickers = {
         live_grep = {
           additional_args = function(opts)
-            return { '--hidden' }
+            return {
+              '--hidden',
+              '--glob',
+              '!{**/.git/*,**/node_modules/*}',
+              -- '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock}',
+            }
           end,
         },
       },
