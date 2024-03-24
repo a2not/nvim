@@ -26,7 +26,19 @@ return {
     {
       '<leader>ff',
       function()
-        require('telescope.builtin').find_files({ hidden = true })
+        require('telescope.builtin').find_files({
+          -- config specific to find_files goes here. :h telescope.builtin.find_files() for more info
+          find_command = {
+            'rg',
+            '--files',
+
+            '--hidden',
+            '--glob',
+            '!**/.git/*',
+            '--glob',
+            '!**/node_modules/*',
+          },
+        })
       end,
       mode = 'n',
       desc = 'find files',
@@ -139,7 +151,9 @@ return {
           -- below is the additional, in order to apply live_grep and grep_string at the same time.
           '--hidden',
           '--glob',
-          '!{**/.git/*,**/node_modules/*}',
+          '!**/.git/*',
+          '--glob',
+          '!**/node_modules/*',
         },
       },
     }
