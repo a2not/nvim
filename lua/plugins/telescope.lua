@@ -1,3 +1,16 @@
+function vim.getVisualSelection()
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg('v')
+  vim.fn.setreg('v', {})
+
+  text = string.gsub(text, '\n', '')
+  if #text > 0 then
+    return text
+  else
+    return ''
+  end
+end
+
 return {
   'nvim-telescope/telescope.nvim',
   event = 'VeryLazy',
@@ -52,6 +65,15 @@ return {
       desc = 'live grep',
     },
     {
+      '<leader>fg',
+      function()
+        local text = vim.getVisualSelection()
+        require('telescope.builtin').live_grep({ default_text = text })
+      end,
+      mode = 'v',
+      desc = 'live_grep selected word',
+    },
+    {
       '<leader>fb',
       function()
         require('telescope.builtin').buffers()
@@ -82,6 +104,15 @@ return {
       end,
       mode = 'n',
       desc = 'search word under cursor',
+    },
+    {
+      '<leader>fw',
+      function()
+        local text = vim.getVisualSelection()
+        require('telescope.builtin').current_buffer_fuzzy_find({ default_text = text })
+      end,
+      mode = 'v',
+      desc = 'search selected word',
     },
     {
       '<leader>fh',
