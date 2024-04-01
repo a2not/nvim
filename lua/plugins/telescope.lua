@@ -70,6 +70,8 @@ return {
         local text = vim.getVisualSelection()
         require('telescope.builtin').live_grep({ default_text = text })
       end,
+      -- without additional local function definition
+      -- "y<ESC>:Telescope live_grep default_text=<C-r>0<CR>",
       mode = 'v',
       desc = 'live_grep selected word',
     },
