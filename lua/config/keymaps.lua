@@ -39,3 +39,7 @@ vim.keymap.set('n', '#', '#zz', { noremap = true, silent = true })
 -- diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Diagnostic: go to previous' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Diagnostic: go to next' })
+
+-- quickfix list
+-- TODO: toggle
+vim.keymap.set('n', '<leader>q', '<cmd>copen<cr>', { desc = 'Quickfix List' })
