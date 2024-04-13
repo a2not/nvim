@@ -53,7 +53,10 @@ return {
             require('trouble').previous({ skip_groups = true, jump = true })
           else
             -- cprev with jumping back to the last when 'no more items'
-            vim.cmd([[:try | cprev | catch | clast | catch | endtry]])
+            local ok, err = pcall(vim.cmd, [[try | cprev | catch | clast | catch | endtry]])
+            if not ok then
+              vim.notify(err, vim.log.levels.ERROR)
+            end
           end
         end,
         desc = 'Previous trouble/quickfix item',
@@ -65,7 +68,10 @@ return {
             require('trouble').next({ skip_groups = true, jump = true })
           else
             -- cnext with jumping back to the first when 'no more items'
-            vim.cmd([[try | cnext | catch | cfirst | catch | endtry]])
+            local ok, err = pcall(vim.cmd, [[try | cnext | catch | cfirst | catch | endtry]])
+            if not ok then
+              vim.notify(err, vim.log.levels.ERROR)
+            end
           end
         end,
         desc = 'Next trouble/quickfix item',
