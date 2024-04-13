@@ -41,5 +41,17 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Diagnostic: go to 
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Diagnostic: go to next' })
 
 -- quickfix list
--- TODO: toggle
-vim.keymap.set('n', '<leader>q', '<cmd>copen<cr>', { desc = 'Quickfix List' })
+vim.keymap.set('n', '<leader>q', function()
+  -- cclose if open, return immediately
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win['quickfix'] == 1 then
+      vim.cmd.cclose()
+      return
+    end
+  end
+
+  -- else copen
+  vim.cmd.copen()
+  -- FYI: can be checked if not open by following condition
+  -- `if not vim.tbl_isempty(vim.fn.getqflist()) then ... end`
+end, { desc = 'toggle Quickfix List' })
