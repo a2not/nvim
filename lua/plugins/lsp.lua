@@ -96,6 +96,13 @@ return {
       },
       gopls = {},
       golangci_lint_ls = {},
+      html = {
+        filetypes = { 'html', 'templ' },
+      },
+      htmx = {
+        filetypes = { 'html', 'templ' },
+      },
+      templ = {},
       rust_analyzer = {},
       nil_ls = {},
     }

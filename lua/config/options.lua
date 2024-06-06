@@ -74,3 +74,5 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- for indent_blankline.nvim simple UI
 -- NOTE: disabled as it messes with the link, appending '%E2%86%B4' at the end of every url
 -- vim.opt.listchars:append('eol:↴')
+
+vim.filetype.add({ extension = { templ = 'templ' } })
