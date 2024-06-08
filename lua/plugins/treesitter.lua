@@ -25,9 +25,6 @@ return {
       'windwp/nvim-ts-autotag',
     },
     {
-      'vrischmann/tree-sitter-templ',
-    },
-    {
       'RRethy/vim-illuminate',
       lazy = true,
       config = function()
