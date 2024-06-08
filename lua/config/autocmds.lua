@@ -9,6 +9,13 @@ vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
   desc = 'Highlight Yanked code range',
 })
 
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*.templ',
+  callback = function()
+    vim.cmd('TSBufEnable highlight')
+  end,
+})
+
 -- vim.api.nvim_create_autocmd(
 --   { 'BufWritePost' },
 --   {
