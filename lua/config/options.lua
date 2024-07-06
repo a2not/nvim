@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 
-vim.cmd('language en_US')
+vim.cmd('language en_US.UTF-8')
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
