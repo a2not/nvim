@@ -1,7 +1,6 @@
 return {
   {
     'rcarriga/nvim-notify',
-    name = 'notify',
     keys = {
       {
         '<leader>un',
@@ -26,9 +25,6 @@ return {
   },
   {
     'folke/noice.nvim',
-    dependencies = {
-      'rcarriga/nvim-notify',
-    },
     opts = {
       lsp = {
         override = {
