@@ -55,13 +55,6 @@ return {
           workingDirectory = { mode = 'auto' },
         },
         on_attach = function(_client, buffer_number)
-          -- NOTE: use EslintFixAll as formatter if eslint is attached
-          vim.keymap.set(
-            'n',
-            '<leader>fm',
-            [[<Cmd>EslintFixAll<CR>]],
-            { desc = 'EslintFixAll', buffer = buffer_number }
-          )
           vim.api.nvim_create_autocmd('BufWritePre', {
             buffer = buffer_number,
             command = 'EslintFixAll',
