@@ -9,6 +9,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.g.errorbells = false
+vim.opt.mouse = ''
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
