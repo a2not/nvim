@@ -59,8 +59,6 @@ vim.opt.updatetime = 500
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
-vim.opt.colorcolumn = '80'
-
 -- disable netrw
 vim.g.loaded_netrw = true
 vim.g.loaded_netrwPlugin = true
