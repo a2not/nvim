@@ -80,7 +80,7 @@ return {
           },
         },
       },
-      tsserver = {
+      ts_ls = {
         settings = {
           experimental = {
             enableProjectDiagnostics = true,
