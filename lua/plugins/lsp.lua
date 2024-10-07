@@ -88,6 +88,7 @@ return {
         },
       },
       gopls = {},
+      goimports = {},
       golangci_lint_ls = {},
       html = {},
       htmx = {},
