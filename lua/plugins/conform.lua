@@ -35,7 +35,6 @@ return {
       lua = { 'stylua' },
       go = { 'gofmt', 'goimports' },
       templ = { 'templ' },
-      html = { 'djlint' },
       -- nix = { 'alejandra' },
       -- javascript = { 'eslint', { 'prettierd', 'prettier' } },
       -- typescript = { 'eslint', { 'prettierd', 'prettier' } },
