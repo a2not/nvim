@@ -94,6 +94,7 @@ return {
       htmx = {},
       templ = {},
       rust_analyzer = {},
+      nil_ls = {},
     }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
