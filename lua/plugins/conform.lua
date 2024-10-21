@@ -36,6 +36,7 @@ return {
       go = { 'gofmt', 'goimports' },
       templ = { 'templ' },
       nix = { 'alejandra' },
+      sql = { 'sqlfmt' },
       -- javascript = { 'eslint', { 'prettierd', 'prettier' } },
       -- typescript = { 'eslint', { 'prettierd', 'prettier' } },
       -- javascriptreact = { 'eslint', { 'prettierd', 'prettier' } },

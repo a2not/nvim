@@ -95,7 +95,6 @@ return {
       templ = {},
       rust_analyzer = {},
       nil_ls = {},
-      -- sqls = {},
       sqlfmt = {},
     }
 
