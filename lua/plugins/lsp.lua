@@ -95,6 +95,7 @@ return {
       templ = {},
       rust_analyzer = {},
       nil_ls = {},
+      sqls = {},
     }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
