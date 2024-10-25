@@ -97,6 +97,8 @@ return {
       rust_analyzer = {},
       nil_ls = {},
       sqlfmt = {},
+      terraformls = {},
+      tflint = {},
     }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()

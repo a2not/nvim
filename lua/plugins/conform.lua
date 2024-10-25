@@ -37,6 +37,11 @@ return {
       templ = { 'templ' },
       nix = { 'alejandra' },
       sql = { 'sqlfmt' },
+
+      terraform = { 'terraform_fmt' },
+      tf = { 'terraform_fmt' },
+      ['terraform-vars'] = { 'terraform_fmt' },
+
       -- javascript = { 'eslint', { 'prettierd', 'prettier' } },
       -- typescript = { 'eslint', { 'prettierd', 'prettier' } },
       -- javascriptreact = { 'eslint', { 'prettierd', 'prettier' } },

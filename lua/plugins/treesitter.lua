@@ -84,6 +84,8 @@ return {
       'vim',
       'html',
       'yaml',
+      'terraform',
+      'hcl',
     },
     auto_install = true,
 
