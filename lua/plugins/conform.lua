@@ -36,7 +36,6 @@ return {
       go = { 'gofmt', 'goimports' },
       templ = { 'templ' },
       nix = { 'alejandra' },
-      sql = { 'sqlfmt' },
 
       terraform = { 'terraform_fmt' },
       tf = { 'terraform_fmt' },

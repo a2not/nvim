@@ -96,7 +96,6 @@ return {
       templ = {},
       rust_analyzer = {},
       nil_ls = {},
-      sqlfmt = {},
       terraformls = {},
       tflint = {},
     }
