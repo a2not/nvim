@@ -3,7 +3,7 @@ return {
     'sotte/presenting.nvim',
     opts = {
       options = {
-        width = 60,
+        width = 50,
       },
       separator = {
         markdown = '^<!%-%- presenting%.nvim sep %-%->',
