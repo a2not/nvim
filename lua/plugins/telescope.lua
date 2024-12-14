@@ -26,12 +26,6 @@ return {
         require('telescope').load_extension('fzf')
       end,
     },
-    {
-      'rcarriga/nvim-notify',
-      config = function()
-        require('telescope').load_extension('notify')
-      end,
-    },
   },
   keys = {
     -- Using Lua functions
@@ -147,14 +141,6 @@ return {
       end,
       mode = 'n',
       desc = 'diagnostics',
-    },
-    {
-      '<leader>fn',
-      function()
-        require('telescope').extensions.notify.notify({})
-      end,
-      mode = 'n',
-      desc = 'View Notification History',
     },
   },
   opts = function()
