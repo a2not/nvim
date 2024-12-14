@@ -92,7 +92,6 @@ return {
       goimports = {},
       golangci_lint_ls = {},
       html = {},
-      htmx = {},
       templ = {},
       rust_analyzer = {},
       nil_ls = {},
