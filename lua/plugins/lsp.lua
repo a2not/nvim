@@ -97,6 +97,7 @@ return {
       nil_ls = {},
       terraformls = {},
       tflint = {},
+      phpactor = {},
     }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
