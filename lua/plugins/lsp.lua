@@ -9,7 +9,7 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    'saghen/blink.cmp',
+    'hrsh7th/cmp-nvim-lsp',
 
     {
       'folke/neodev.nvim',
@@ -100,7 +100,8 @@ return {
     }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    local default_capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+    local default_capabilities =
+      vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local default_handlers = {
       ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
