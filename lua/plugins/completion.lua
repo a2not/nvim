@@ -1,4 +1,6 @@
 return {
+  -- TODO: migrate to blink.nvim, with better buffer source
+  -- https://github.com/a2not/nvim/commit/1d87e7ee32da0dd080e93fce1b218899c7debda0
   {
     'hrsh7th/nvim-cmp',
     event = { 'BufReadPost', 'BufNewFile', 'InsertEnter', 'CmdlineEnter' },
