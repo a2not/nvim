@@ -1,9 +1,7 @@
 return {
-  -- TODO: migrate to blink.nvim, with better buffer source
-  -- https://github.com/a2not/nvim/commit/1d87e7ee32da0dd080e93fce1b218899c7debda0
   {
     'hrsh7th/nvim-cmp',
-    event = { 'BufReadPost', 'BufNewFile', 'InsertEnter', 'CmdlineEnter' },
+    event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'ray-x/cmp-treesitter',
@@ -96,15 +94,13 @@ return {
               end
             end,
             s = cmp.mapping.confirm({ select = true }),
-            c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+            c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
           }),
 
           -- Super-Tab like mapping from nvim-cmp wiki
           -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
           ['<Tab>'] = superTab,
-          ['<Down>'] = superTab,
           ['<S-Tab>'] = shiftSuperTab,
-          ['<Up>'] = shiftSuperTab,
         }),
         sources = cmp.config.sources({
           { name = 'path' },
