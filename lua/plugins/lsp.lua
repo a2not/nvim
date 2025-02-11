@@ -98,6 +98,7 @@ return {
       terraformls = {},
       tflint = {},
       phpactor = {},
+      biome = {},
     }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()

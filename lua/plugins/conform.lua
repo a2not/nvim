@@ -41,10 +41,10 @@ return {
       tf = { 'terraform_fmt' },
       ['terraform-vars'] = { 'terraform_fmt' },
 
-      -- javascript = { 'eslint', { 'prettierd', 'prettier' } },
-      -- typescript = { 'eslint', { 'prettierd', 'prettier' } },
-      -- javascriptreact = { 'eslint', { 'prettierd', 'prettier' } },
-      -- typescriptreact = { 'eslint', { 'prettierd', 'prettier' } },
+      javascript = { 'biome', 'eslint', 'prettierd', 'prettier', stop_after_first = true },
+      typescript = { 'biome', 'eslint', 'prettierd', 'prettier', stop_after_first = true },
+      javascriptreact = { 'biome', 'eslint', 'prettierd', 'prettier', stop_after_first = true },
+      typescriptreact = { 'biome', 'eslint', 'prettierd', 'prettier', stop_after_first = true },
     },
   },
 }
