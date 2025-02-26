@@ -24,11 +24,6 @@ return {
 
       'windwp/nvim-ts-autotag',
       'windwp/nvim-autopairs',
-
-      {
-        'zbirenbaum/copilot-cmp',
-        config = true,
-      },
     },
     config = function()
       vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
@@ -119,7 +114,6 @@ return {
             name = 'rg',
             keyword_length = 3,
           },
-          { name = 'copilot', group_index = 2 },
         }),
         formatting = {
           expandable_indicator = true,
@@ -127,7 +121,6 @@ return {
             mode = 'symbol_text',
             maxwidth = 50,
             ellipsis_char = '...',
-            symbol_map = { Copilot = '' },
           }),
         },
         experimental = {
