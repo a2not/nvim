@@ -110,7 +110,6 @@ return {
       terraformls = {},
       tflint = {},
       phpactor = {},
-      biome = {},
       astro = {},
     }
 
