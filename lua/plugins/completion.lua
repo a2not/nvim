@@ -108,12 +108,12 @@ return {
           ['<S-Tab>'] = shiftSuperTab,
         }),
         sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'treesitter' },
+          { name = 'nvim_lsp_signature_help' },
+          { name = 'nvim_lua' },
           { name = 'path' },
           { name = 'emoji' },
-          { name = 'treesitter' },
-          { name = 'nvim_lsp' },
-          { name = 'nvim_lua' },
-          { name = 'nvim_lsp_signature_help' },
           { name = 'luasnip', option = { show_autosnippets = true } },
           {
             name = 'rg',
