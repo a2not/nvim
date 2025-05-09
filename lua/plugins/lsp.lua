@@ -12,9 +12,18 @@ return {
     },
   },
 
+  {
+    'mason-org/mason.nvim',
+    opts = {
+      ui = {
+        border = 'rounded',
+      },
+    },
+  },
+
   'neovim/nvim-lspconfig',
   dependencies = {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     'hrsh7th/cmp-nvim-lsp',
@@ -124,12 +133,6 @@ return {
       ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
       ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
     }
-
-    require('mason').setup({
-      ui = {
-        border = 'rounded',
-      },
-    })
 
     local ensure_installed = vim.tbl_keys(servers or {})
     require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
