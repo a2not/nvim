@@ -77,8 +77,6 @@ return {
       snippets = { preset = 'luasnip' },
 
       fuzzy = { implementation = 'prefer_rust_with_warning' },
-
-      signature = { enabled = true, window = { border = 'rounded' } },
     },
 
     opts_extend = { 'sources.default' },
