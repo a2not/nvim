@@ -112,6 +112,10 @@ return {
           { name = 'treesitter' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lua' },
+          {
+            name = 'lazydev',
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+          },
           { name = 'path' },
           { name = 'emoji' },
           { name = 'luasnip', option = { show_autosnippets = true } },

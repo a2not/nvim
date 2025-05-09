@@ -1,8 +1,16 @@
 return {
-  -- NOTE: shout-out to Dillon Mulroy for awesome lsp conf
-  -- https://github.com/dmmulroy/kickstart.nix/blob/a4a283334890b521b357546770a6b3ce6c18de17/config/nvim/lua/plugins/lsp.lua
   -- NOTE: shout-out to TJ, the GOAT
   -- https://github.com/nvim-lua/kickstart.nvim
+
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
 
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -10,11 +18,6 @@ return {
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     'hrsh7th/cmp-nvim-lsp',
-
-    {
-      'folke/neodev.nvim',
-      opts = {},
-    },
 
     {
       'j-hui/fidget.nvim',
