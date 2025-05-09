@@ -98,20 +98,24 @@ return {
           enable = true,
           set_jumps = true, -- whether to set jumps in the jumplist
           goto_next_start = {
-            [']f'] = { query = '@function.outer', desc = 'TS: goto_next_start => @function.outer' },
-            [']]'] = { query = '@class.outer', desc = 'TS: goto_next_start => @class.outer' },
+            [']f'] = '@function.outer',
+            [']c'] = '@class.outer',
+            [']a'] = '@parameter.inner',
           },
           goto_next_end = {
-            [']F'] = { query = '@function.outer', desc = 'TS: goto_next_end => @function.outer' },
-            [']['] = { query = '@class.outer', desc = 'TS: goto_next_end => @class.outer' },
+            [']F'] = '@function.outer',
+            [']C'] = '@class.outer',
+            [']A'] = '@parameter.inner',
           },
           goto_previous_start = {
-            ['[f'] = { query = '@function.outer', desc = 'TS: goto_previous_start => @function.outer' },
-            ['[['] = { query = '@class.outer', desc = 'TS: goto_previous_start => @class.outer' },
+            ['[f'] = '@function.outer',
+            ['[c'] = '@class.outer',
+            ['[a'] = '@parameter.inner',
           },
           goto_previous_end = {
-            ['[F'] = { query = '@function.outer', desc = 'TS: goto_previous_end => @function.outer' },
-            ['[]'] = { query = '@class.outer', desc = 'TS: goto_previous_end => @class.outer' },
+            ['[F'] = '@function.outer',
+            ['[C'] = '@class.outer',
+            ['[A'] = '@parameter.inner',
           },
         },
 
