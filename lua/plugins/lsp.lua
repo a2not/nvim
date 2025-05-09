@@ -34,7 +34,7 @@ return {
       'neovim/nvim-lspconfig',
       'mason-org/mason.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-      'hrsh7th/cmp-nvim-lsp',
+      'saghen/blink.cmp',
 
       {
         'j-hui/fidget.nvim',
@@ -159,26 +159,16 @@ return {
         astro = {},
       }
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      local default_capabilities =
-        vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
-      local default_handlers = {
-        ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-        ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-      }
-
       -- NOTE: for installing non-LSP tools such as `stylua`, `goimports`, etc.
       local ensure_installed = vim.tbl_keys(servers or {})
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
       require('mason-lspconfig').setup({
         ensure_installed = {},
+        automatic_enable = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend('force', {}, default_capabilities, server.capabilities or {})
-            server.handlers = vim.tbl_deep_extend('force', {}, default_handlers, server.handlers or {})
             require('lspconfig')[server_name].setup(server)
           end,
         },
