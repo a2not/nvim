@@ -12,7 +12,7 @@ return {
     {
       '<leader>e',
       function()
-        require('neo-tree.command').execute({ toggle = true, dir = vim.loop.cwd() })
+        require('neo-tree.command').execute({ toggle = true, dir = vim.fn.getcwd() })
       end,
       desc = 'Explorer NeoTree (cwd)',
     },
@@ -53,7 +53,7 @@ return {
     event_handlers = {
       {
         event = 'file_opened',
-        handler = function(file_path)
+        handler = function()
           require('neo-tree.command').execute({ action = 'close' })
         end,
       },
