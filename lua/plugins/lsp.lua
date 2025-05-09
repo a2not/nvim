@@ -1,7 +1,6 @@
 return {
   -- NOTE: shout-out to TJ, the GOAT
   -- https://github.com/nvim-lua/kickstart.nvim
-
   {
     'folke/lazydev.nvim',
     ft = 'lua',
