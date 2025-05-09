@@ -26,9 +26,7 @@ return {
     --- @type blink.cmp.Config
     opts = {
       keymap = {
-        preset = 'enter',
-        ['<Tab>'] = { 'select_next', 'fallback' },
-        ['<S-Tab>'] = { 'select_prev', 'fallback' },
+        preset = 'default',
       },
 
       appearance = {
@@ -38,7 +36,6 @@ return {
 
       completion = {
         accept = {
-          -- experimental auto-brackets support
           auto_brackets = {
             enabled = true,
           },
@@ -49,7 +46,13 @@ return {
             treesitter = { 'lsp' },
           },
         },
-        documentation = { auto_show = true, auto_show_delay_ms = 500, window = { border = 'rounded' } },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 500,
+          window = {
+            border = 'rounded',
+          },
+        },
         ghost_text = {
           enabled = vim.g.ai_cmp,
         },
