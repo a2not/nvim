@@ -14,7 +14,6 @@ return {
 
   {
     'mason-org/mason.nvim',
-    version = '1.11.0', -- TODO: remove this after nvim v0.11
     config = function()
       require('mason').setup({
         ui = {
@@ -32,7 +31,6 @@ return {
 
   {
     'mason-org/mason-lspconfig.nvim',
-    version = '1.32.0', -- TODO: remove this after nvim v0.11
     dependencies = {
       'neovim/nvim-lspconfig',
       'mason-org/mason.nvim',
@@ -177,7 +175,6 @@ return {
 
       require('mason-lspconfig').setup({
         ensure_installed = {},
-        automatic_installation = true, -- TODO: remove this after mason v2
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
