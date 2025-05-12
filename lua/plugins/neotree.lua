@@ -16,20 +16,6 @@ return {
       end,
       desc = 'Explorer NeoTree (cwd)',
     },
-    {
-      '<leader>ge',
-      function()
-        require('neo-tree.command').execute({ toggle = true, source = 'git_status' })
-      end,
-      desc = 'Git explorer',
-    },
-    {
-      '<leader>be',
-      function()
-        require('neo-tree.command').execute({ toggle = true, source = 'buffers' })
-      end,
-      desc = 'Buffer explorer',
-    },
   },
   opts = {
     filesystem = {
