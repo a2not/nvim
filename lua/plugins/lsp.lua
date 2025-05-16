@@ -157,6 +157,7 @@ return {
         tflint = {},
         phpactor = {},
         astro = {},
+        tsp_server = {},
       }
 
       -- NOTE: for installing non-LSP tools such as `stylua`, `goimports`, etc.
