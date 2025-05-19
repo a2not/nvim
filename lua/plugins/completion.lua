@@ -26,7 +26,9 @@ return {
     --- @type blink.cmp.Config
     opts = {
       keymap = {
-        preset = 'default',
+        preset = 'enter',
+        ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
       },
 
       appearance = {
