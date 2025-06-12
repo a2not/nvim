@@ -1,4 +1,4 @@
--- local has = require('lib.util').has
+-- local has = require('custom.util').has
 -- local commit_bufnr = vim.api.nvim_get_current_buf()
 --
 -- if has('CopilotChat.nvim') then
