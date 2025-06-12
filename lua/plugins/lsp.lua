@@ -34,7 +34,7 @@ return {
       'neovim/nvim-lspconfig',
       'mason-org/mason.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-      'hrsh7th/cmp-nvim-lsp',
+      'saghen/blink.cmp',
 
       {
         'j-hui/fidget.nvim',
