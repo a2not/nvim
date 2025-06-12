@@ -66,9 +66,6 @@ vim.g.loaded_netrwPlugin = true
 vim.opt.path:append({ '**' }) -- Finding files - Search down into subfolders
 vim.opt.wildignore:append({ '*/node_modules/*' })
 
--- for nvim-cmp ins-completion
-vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'noselect' }
-
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- for indent_blankline.nvim simple UI
