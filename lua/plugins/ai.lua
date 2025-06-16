@@ -23,12 +23,6 @@ return {
     },
     opts = {
       chat_autocomplete = false,
-      prompts = {
-        Commit = {
-          prompt = 'Write a commit message for the change with commitizen convention as a prepending diff to `.git/COMMIT_EDITMSG`. Keep the title under 50 characters and wrap message at 72 characters.',
-          context = 'git:staged',
-        },
-      },
     },
   },
 }
