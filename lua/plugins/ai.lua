@@ -43,7 +43,8 @@ return {
       },
       windows = {
         position = 'right',
-        width = 30,
+        wrap = true,
+        width = 40,
         sidebar_header = {
           enabled = true,
           align = 'center',
