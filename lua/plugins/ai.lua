@@ -41,7 +41,6 @@ return {
         support_paste_from_clipboard = true,
         minimize_diff = true,
       },
-      hints = { enabled = false },
       windows = {
         position = 'right',
         width = 30,
