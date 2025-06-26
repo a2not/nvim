@@ -46,11 +46,6 @@ return {
             auto_insert = true,
           },
         },
-        accept = {
-          auto_brackets = {
-            enabled = false,
-          },
-        },
         menu = {
           border = 'rounded',
           draw = {
@@ -96,5 +91,11 @@ return {
     },
 
     opts_extend = { 'sources.default' },
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
   },
 }
