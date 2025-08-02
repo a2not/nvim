@@ -94,85 +94,29 @@ return {
         },
       })
 
-      local servers = {
-        eslint = {
-          settings = {
-            workingDirectory = { mode = 'auto' },
-          },
-          on_attach = function(_, buffer_number)
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              buffer = buffer_number,
-              command = 'EslintFixAll',
-            })
-          end,
-        },
-        jsonls = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              runtime = { version = 'LuaJIT' },
-              workspace = {
-                checkThirdParty = false,
-                library = vim.list_extend(vim.api.nvim_get_runtime_file('lua', true), {
-                  '${3rd}/luv/library',
-                  '${3rd}/busted/library',
-                  '${3rd}/luassert/library',
-                }),
-              },
-              completion = {
-                callSnippet = 'Replace',
-              },
-              telemetry = { enabled = false },
-            },
-          },
-        },
-        stylua = {},
-        ts_ls = {
-          settings = {
-            experimental = {
-              enableProjectDiagnostics = true,
-            },
-          },
-        },
-        gopls = {},
-        golangci_lint_ls = {
-          -- NOTE: while waiting for https://github.com/nametake/golangci-lint-langserver/issues/51
-          init_options = {
-            command = {
-              'golangci-lint',
-              'run',
-              '--output.json.path',
-              'stdout',
-              '--show-stats=false',
-              '--issues-exit-code=1',
-            },
-          },
-        },
-        html = {},
-        templ = {},
-        rust_analyzer = {},
-        nil_ls = {},
-        terraformls = {},
-        tflint = {},
-        phpactor = {},
-        astro = {},
-        tsp_server = {},
-      }
-
-      -- NOTE: for installing non-LSP tools such as `stylua` etc.
-      local ensure_installed = vim.tbl_keys(servers or {})
-      require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
-
-      require('mason-lspconfig').setup({
-        ensure_installed = {},
-        automatic_enable = true,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            require('lspconfig')[server_name].setup(server)
-          end,
+      -- NOTE: for installing non-LSP tools such as `stylua`
+      require('mason-tool-installer').setup({
+        ensure_installed = {
+          'eslint',
+          'jsonls',
+          'lua_ls',
+          'stylua',
+          'ts_ls',
+          'gopls',
+          'golangci_lint_ls',
+          'html',
+          'templ',
+          'rust_analyzer',
+          'nil_ls',
+          'terraformls',
+          'tflint',
+          'phpactor',
+          'astro',
+          'tsp_server',
         },
       })
+
+      require('mason-lspconfig').setup()
     end,
   },
 }
