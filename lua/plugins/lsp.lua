@@ -135,7 +135,6 @@ return {
           },
         },
         gopls = {},
-        goimports = {},
         golangci_lint_ls = {
           -- NOTE: while waiting for https://github.com/nametake/golangci-lint-langserver/issues/51
           init_options = {
@@ -160,7 +159,7 @@ return {
         tsp_server = {},
       }
 
-      -- NOTE: for installing non-LSP tools such as `stylua`, `goimports`, etc.
+      -- NOTE: for installing non-LSP tools such as `stylua` etc.
       local ensure_installed = vim.tbl_keys(servers or {})
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
