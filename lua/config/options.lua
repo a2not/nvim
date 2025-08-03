@@ -51,6 +51,8 @@ vim.opt.showcmd = true
 -- Give more space for displaying messages.
 vim.opt.cmdheight = 0
 
+vim.opt.winborder = 'rounded'
+
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
 vim.opt.updatetime = 500

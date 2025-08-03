@@ -13,19 +13,7 @@ return {
 
   {
     'mason-org/mason.nvim',
-    config = function()
-      require('mason').setup({
-        ui = {
-          border = 'rounded',
-        },
-      })
-      require('lspconfig.ui.windows').default_options.border = 'rounded'
-      vim.diagnostic.config({
-        float = {
-          border = 'rounded',
-        },
-      })
-    end,
+    opts = {},
   },
 
   {
