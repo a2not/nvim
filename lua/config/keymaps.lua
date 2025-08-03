@@ -36,14 +36,6 @@ vim.keymap.set('n', '%', '%zz', { noremap = true, silent = true })
 vim.keymap.set('n', '*', '*zz', { noremap = true, silent = true })
 vim.keymap.set('n', '#', '#zz', { noremap = true, silent = true })
 
--- diagnostics
-vim.keymap.set('n', '[d', function()
-  vim.diagnostic.jump({ count = -1, float = true })
-end, { desc = 'Diagnostic: go to previous' })
-vim.keymap.set('n', ']d', function()
-  vim.diagnostic.jump({ count = 1, float = true })
-end, { desc = 'Diagnostic: go to next' })
-
 -- quickfix list
 vim.keymap.set('n', '<leader>q', function()
   -- cclose if open, return immediately
