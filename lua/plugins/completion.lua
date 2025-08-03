@@ -1,7 +1,7 @@
 return {
   {
     'saghen/blink.cmp',
-    event = 'VimEnter',
+    event = 'InsertEnter',
     version = '1.*',
     dependencies = {
       {
@@ -21,6 +21,7 @@ return {
       'folke/lazydev.nvim',
       'fang2hou/blink-copilot',
       'Kaiser-Yang/blink-cmp-avante',
+      'olimorris/codecompanion.nvim',
     },
 
     --- @module 'blink.cmp'
@@ -65,7 +66,7 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'copilot', 'avante' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'copilot', 'avante', 'codecompanion' },
         providers = {
           lazydev = {
             name = 'lazydev',
@@ -91,6 +92,13 @@ return {
     },
 
     opts_extend = { 'sources.default' },
+
+    config = function(_, opts)
+      require('blink.cmp').setup(opts)
+
+      -- Extend neovim's client capabilities with the completion ones.
+      vim.lsp.config('*', { capabilities = require('blink.cmp').get_lsp_capabilities(nil, true) })
+    end,
   },
 
   {
