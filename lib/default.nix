@@ -13,6 +13,9 @@ in rec {
 
       nvimSkipModules = [
         "init"
+        "config.options"
+        "config.lazy"
+        "plugins.ui"
       ];
 
       postInstall = ''
