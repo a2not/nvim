@@ -27,7 +27,8 @@
 
     devShells = forAllSystems (system: {
       default = nixpkgs.legacyPackages.${system}.mkShell {
-        buildInputs = [nixpkgs.legacyPackages.${system}.git];
+        # buildInputs = [nixpkgs.legacyPackages.${system}.git];
+        packages = [nixpkgs.legacyPackages.${system}.git];
       };
     });
 
