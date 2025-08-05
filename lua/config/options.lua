@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 
--- vim.cmd('language en_US.UTF-8')
+-- vim.cmd('language en_US.UTF-8') but it might
+-- E5108: Error executing lua vim/_editor.lua:0: pre-vimrc command line..script nvim_exec2() called at pre-vimrc command line:0, line 1: Vim(language):E197: Cannot set language to "en_US.UTF-8"
 pcall(vim.cmd.language, 'en_US.UTF-8')
 
 vim.scriptencoding = 'utf-8'
