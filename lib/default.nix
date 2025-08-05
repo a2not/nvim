@@ -13,9 +13,6 @@ in rec {
 
       nvimSkipModules = [
         "init"
-        "config.options"
-        "config.lazy"
-        "plugins.ui"
       ];
 
       postInstall = ''
@@ -61,7 +58,11 @@ in rec {
 
   initLua = ''
     lua << EOF
-    ${builtins.readFile ../init.lua}
+    -- same as ../init.lua
+    require('config.options')
+    require('config.keymaps')
+    require('config.autocmds')
+    require('config.lazy')
     EOF
   '';
 
