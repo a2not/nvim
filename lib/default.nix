@@ -58,11 +58,7 @@ in rec {
 
   initLua = ''
     lua << EOF
-    -- same as ../init.lua
-    require('config.options')
-    require('config.keymaps')
-    require('config.autocmds')
-    require('config.lazy')
+    ${builtins.readFile ../init.lua}
     EOF
   '';
 
