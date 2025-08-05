@@ -7,16 +7,23 @@ in rec {
     pkgs = legacyPackages.${system};
   in
     buildVimPlugin {
+      buildInputs = with pkgs; [doppler nodejs];
       name = "a2not";
+      src = ../.;
+
+      nvimSkipModules = [
+        "init"
+      ];
+
       postInstall = ''
         rm -rf $out/.gitignore
+        rm -rf $out/Justfile
         rm -rf $out/LICENSE
         rm -rf $out/README.md
         rm -rf $out/flake.lock
         rm -rf $out/flake.nix
         rm -rf $out/lib
       '';
-      src = ../.;
     };
 
   mkNeovimPlugins = {system}: let

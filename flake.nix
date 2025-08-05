@@ -8,38 +8,29 @@
   outputs = {
     self,
     nixpkgs,
-    flake-parts,
-    ...
-  } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      flake = {
-        lib = import ./lib {inherit inputs;};
+  }: let
+    forAllSystems = nixpkgs.lib.genAttrs ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
+  in {
+    lib = import ./lib {inputs = self.inputs;};
+
+    packages = forAllSystems (system: {
+      default = self.lib.mkVimPlugin {inherit system;};
+      neovim = self.lib.mkNeovim {inherit system;};
+    });
+
+    apps = forAllSystems (system: {
+      nvim = {
+        program = "${self.packages.${system}.neovim}/bin/nvim";
+        type = "app";
       };
+    });
 
-      systems = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
-
-      perSystem = {
-        config,
-        self',
-        inputs',
-        pkgs,
-        system,
-        ...
-      }: let
-        inherit (pkgs) git mkShell;
-      in {
-        devShells = {
-          default = mkShell {
-            buildInputs = [git];
-          };
-        };
-
-        formatter = pkgs.alejandra;
-
-        packages = {
-          default = self.lib.mkVimPlugin {inherit system;};
-          neovim = self.lib.mkNeovim {inherit system;};
-        };
+    devShells = forAllSystems (system: {
+      default = nixpkgs.legacyPackages.${system}.mkShell {
+        buildInputs = [nixpkgs.legacyPackages.${system}.just];
       };
-    };
+    });
+
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+  };
 }
