@@ -37,17 +37,20 @@ return {
       'nvim-tree/nvim-web-devicons',
       'folke/noice.nvim',
     },
-    opts = {
-      sections = {
-        lualine_x = {
-          {
-            require('noice').api.status.mode.get,
-            cond = require('noice').api.status.mode.has,
-            color = { fg = '#ff9e64' },
+    config = function()
+      local noice_api_status = require('noice').api.status
+      require('lualine').setup({
+        sections = {
+          lualine_x = {
+            {
+              noice_api_status.mode.get,
+              cond = noice_api_status.mode.has,
+              color = { fg = '#ff9e64' },
+            },
           },
         },
-      },
-    },
+      })
+    end,
   },
 
   {
