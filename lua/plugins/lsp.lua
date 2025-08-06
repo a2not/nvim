@@ -59,7 +59,6 @@ return {
         severity_sort = true,
         float = { border = 'rounded' },
         underline = true,
-        virtual_lines = true,
         jump = { float = true },
       })
 
