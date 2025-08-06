@@ -33,7 +33,7 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      go = { 'gopls' },
+      go = { 'goimports', 'gofumpt' },
       templ = { 'templ' },
       nix = { 'alejandra' },
 

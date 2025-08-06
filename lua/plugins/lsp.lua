@@ -62,7 +62,7 @@ return {
         jump = { float = true },
       })
 
-      -- NOTE: for installing non-LSP tools such as `stylua`
+      -- NOTE: for installing non-LSP tools such as `stylua`, `goimports`
       require('mason-tool-installer').setup({
         ensure_installed = {
           'eslint',
@@ -71,6 +71,8 @@ return {
           'stylua',
           'ts_ls',
           'gopls',
+          'goimports',
+          'gofumpt',
           'golangci_lint_ls',
           'html',
           'templ',
